@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: learnwise_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: learnwise
+      POSTGRES_USER: learnwise_user
+      POSTGRES_PASSWORD: learnwise_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - learnwise_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  learnwise_postgres_data:
