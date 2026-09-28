@@ -1,13 +1,18 @@
+from app.routes import auth
+from app.database import Base, engine
+from app.models import user
+
 from fastapi import FastAPI
 from sqlalchemy import text
-from app.database import engine
 
 app = FastAPI(
     title="LearnWise API",
     description="AI-Based Personalized Learning Path Recommendation and Adaptive Assessment System",
     version="1.0.0"
 )
+app.include_router(auth.router)
 
+Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():
