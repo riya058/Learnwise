@@ -22,3 +22,14 @@ class Topic(Base):
         back_populates = "topic",
         cascade = "all, delete-orphan"
     )
+
+    questions = relationship(
+        "Question",
+        back_populates = "topic",
+        cascade = "all, delete-orphan"
+    )
+
+    responses = relationship(
+        "QuizResponse",
+        back_populates = "topic"
+    )

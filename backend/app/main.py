@@ -7,6 +7,10 @@ from app.models.learningresource import LearningResource
 from app.routes.course import router as course_router
 from app.routes.topic import router as topic_router
 from app.routes.learningresource import router as learningresource_router
+from app.models.question import Question
+from app.routes.quiz import router as quiz_router
+from app.models.quiz_attempt import QuizAttempt
+from app.models.quiz_response import QuizResponse
 
 from fastapi import FastAPI
 from sqlalchemy import text
@@ -21,6 +25,7 @@ app.include_router(auth.router)
 app.include_router(course_router)
 app.include_router(topic_router)
 app.include_router(learningresource_router)
+app.include_router(quiz_router)
 
 Base.metadata.create_all(bind=engine)
 
